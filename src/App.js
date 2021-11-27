@@ -3,20 +3,19 @@ import twitterLogo from "./assets/twitter-logo.svg";
 import { ethers } from "ethers";
 import { useState, useEffect } from "react";
 import { useMoralis } from "react-moralis";
-import { Transition } from "react-transition-group";
+// import { Transition } from "react-transition-group";
 import Auth from "./Auth/Auth";
-import Login from "./Auth/Login";
+// import Login from "./Auth/Login";
 import NFTUploadForm from "./Form/NFTUploadForm";
-import SignUp from "./Auth/SignUp";
+// import SignUp from "./Auth/SignUp";
 
 // console.log(Rarepress)
 const TWITTER_HANDLE = "timmyisanerd_";
 const TWITTER_LINK = `https://twitter.com/${TWITTER_HANDLE}`;
 
 function App() {
-  const { authenticate, isAuthenticated, user, logout } = useMoralis();
+  const { isAuthenticated, user, logout, isLoggingOut } = useMoralis();
   const [networkMessage, setNetworkMessage] = useState("");
-  const [currentAccount, setCurrentAccount] = useState("");
   const [AuthForm, setAuthForm] = useState(false);
   const defaultStyles = {
     transition: "opacity 300ms ease-in-out",
@@ -52,42 +51,9 @@ function App() {
     }
   };
 
-  // const checkIfWalletIsConnected = async () => {
-  //   const { ethereum } = window;
-
-  //   if (!ethereum) {
-  //     console.log("Make sure you have MetaMask");
-  //     return;
-  //   } else {
-  //     connectionStatus();
-  //     console.log("Wallet Connected", ethereum);
-  //   }
-
-  //   const accounts = await ethereum.request({ method: "eth_accounts" });
-
-  //   // User can have multiple authorized accounts
-  //   if (accounts.length !== 0) {
-  //     const account = accounts[0];
-  //     console.log("Found an authorized account:", account);
-  //     setCurrentAccount(account);
-  //     // setupEventListener();
-  //   } else {
-  //     console.log("No authorized account found");
-  //   }
-  // };
-
-  const askContractToMintNft = async () => {
-    try {
-      const { ethereum } = window;
-
-      if (ethereum) {
-      } else {
-        console.log("Ethereum object doesn't exist!");
-      }
-    } catch (error) {
-      console.log(error);
-    }
-  };
+  const MintNFTs = () =>{
+    
+  }
 
   const LogOutButton = () => {
     return (
@@ -95,7 +61,7 @@ function App() {
         className="cta-button connect-wallet-button"
         onClick={() => logout()}
       >
-        Log Out
+        {isLoggingOut ? "Logging Out" : "Log Out"}
       </button>
     );
   };
@@ -103,7 +69,7 @@ function App() {
   const RenderIfConnected = () => {
     return (
       <div>
-        <h1>Hello {user.get("username")}</h1>
+        <h1>Hello {user.get("ethAddress")}</h1>
         <NFTUploadForm />
         {/* <button className="cta-button connect-wallet-button">
           Mass Mint NFTs
@@ -171,9 +137,9 @@ function App() {
               </div>
             ) : (
               <div>
-                {AuthForm ? <Login /> : <SignUp />}
+                {/* {AuthForm ? <Login /> : <SignUp />} */}
                 <Auth />
-                <FormSwitch />
+                {/* <FormSwitch /> */}
               </div>
             )}
           </header>
