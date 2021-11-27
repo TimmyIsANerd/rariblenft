@@ -2,10 +2,15 @@ import { useState } from "react";
 const NFTUploadForm = () => {
   const [tokenName, setTokenName] = useState();
   const [description, setDescription] = useState();
+  const [imageFile, setImageFile] = useState(null);
+
+
   return (
     // NFT Upload Form
     <div>
-      <form>
+      <form onSubmit={() =>{
+        
+      }}>
         <div className="form_element">
           <input
             className="form_control"
@@ -14,6 +19,8 @@ const NFTUploadForm = () => {
             name="name"
             placeholder="Token Name"
             value={tokenName}
+            onChange={(e) => setTokenName
+            (e.target.value)}
           />
         </div>
         <div className="form_element">
@@ -24,6 +31,7 @@ const NFTUploadForm = () => {
             name="description"
             placeholder="Description"
             value={description}
+            onChange={(e) => setDescription(e.target.value)}
           />
         </div>
         <div className="form_element">
@@ -36,9 +44,13 @@ const NFTUploadForm = () => {
             id="input_image"
             name="image"
             accept="image/png, image/jpeg"
+            onChange={(e) => {
+              setImageFile(e.target.files[0]);
+            }}
           />
         </div>
-        <button className="cta-button connect-wallet-button">Mint NFT</button>
+        <button className="cta-button connect-wallet-button" type="submit
+        ">Mint NFT</button>
       </form>
     </div>
   );
