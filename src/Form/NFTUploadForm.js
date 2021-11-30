@@ -55,7 +55,6 @@ const NFTUploadForm = () => {
         // })
         // console.log(res);
         
-      }
   };
 
   return (
