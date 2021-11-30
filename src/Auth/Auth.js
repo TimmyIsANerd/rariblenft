@@ -4,7 +4,7 @@ const Auth = () => {
   return (
     <button
       className="cta-button connect-wallet-button"
-      onClick={() => authenticate()}
+      onClick={() => authenticate({signingMessage: "Moralis NFT App Authentication"})}
     >
       {isAuthenticating ? "Authenticating..." : "Connect Via MetaMask"}
     </button>

@@ -5,9 +5,9 @@ import { useState, useEffect } from "react";
 import { useMoralis } from "react-moralis";
 // import { Transition } from "react-transition-group";
 import Auth from "./Auth/Auth";
-// import Login from "./Auth/Login";
+import Login from "./Auth/Login";
 import NFTUploadForm from "./Form/NFTUploadForm";
-// import SignUp from "./Auth/SignUp";
+import SignUp from "./Auth/SignUp";
 
 // console.log(Rarepress)
 const TWITTER_HANDLE = "timmyisanerd_";
@@ -137,9 +137,9 @@ function App() {
               </div>
             ) : (
               <div>
-                {/* {AuthForm ? <Login /> : <SignUp />} */}
+                {AuthForm ? <Login /> : <SignUp />}
                 <Auth />
-                {/* <FormSwitch /> */}
+                <FormSwitch />
               </div>
             )}
           </header>
